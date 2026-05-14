@@ -512,25 +512,3 @@ Ver sección **9. Comparación de memoria Flash** para la metodología, procedim
 La implementación propia usa `WiFi.h`, `WebServer.h`, `DNSServer.h` y `Preferences.h`, lo que permite mayor control y facilita explicar cada módulo del sistema porque el aprovisionamiento fue construido directamente con librerías base.
 
 WiFiManager es más conveniente para proyectos donde se busca rapidez de desarrollo y funcionalidades completas ya integradas, pero puede incluir elementos adicionales que no son estrictamente necesarios para este laboratorio.
-
-
-## 11. Estructura del repositorio
-
-```text
-ESP32-WiFi-Provisioning/
-│
-├── src/
-│   └── wifi_provisioning/
-│       └── wifi_provisioning.ino
-│
-├── docs/
-│   ├── endpoints.md
-│   ├── architecture.md
-│   ├── validation.md
-│   └── images/
-│       ├── block_diagram.png
-│       ├── prototype_photo.jpg
-│       └── serial_monitor.png
-│
-├── README.md
-└── LICENSE
