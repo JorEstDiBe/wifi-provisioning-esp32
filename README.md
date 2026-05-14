@@ -114,15 +114,20 @@ En el código se configura el pin con `INPUT_PULLUP`, por lo tanto:
 Si el botón se mantiene presionado durante aproximadamente **4 segundos**, el ESP32 borra las credenciales guardadas y reinicia en modo configuración.
 
 ### 4.3. Esquemático de interconexión
-+-------------------+
-|      ESP32        |
-|                   |
-| GPIO27 -----------+------ Botón ------ GND
-|                   |
-| USB --------------+------ Computador / Fuente 5V
-|                   |
-| GND --------------+------ Tierra común
-+-------------------+
+```mermaid
+flowchart LR
+    PC[Computador / Fuente USB<br/>5V] -->|Cable USB| ESP32[ESP32 DevKit]
+
+    ESP32 -->|GPIO27<br/>INPUT_PULLUP| BTN[Botón pulsador]
+    BTN -->|Al presionar conecta a| GND[GND]
+
+    ESP32 -->|GND| GND
+
+    ESP32 -.->|Opcional: GPIO de estado| LED[LED indicador]
+    LED -.->|Resistencia 220 ohm| GND
+```
+
+El botón de reset se conecta entre `GPIO27` y `GND`. Como el pin se configura en el código con `INPUT_PULLUP`, el ESP32 lee `HIGH` cuando el botón no está presionado y `LOW` cuando el botón se presiona. Si el botón permanece presionado durante aproximadamente 4 segundos, se borran las credenciales almacenadas y el sistema reinicia en modo configuración.
 
 ## 5. Funcionamiento
 
