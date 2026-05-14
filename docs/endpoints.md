@@ -31,5 +31,62 @@ Guarda las credenciales WiFi en memoria no volátil.
 
 Ejemplo de payload:
 
-```http
-ssid=MiRedWiFi&password=MiPassword123
+```httpssid=MiRedWiFi&password=MiPassword123```
+
+## `GET /api/status`
+
+Consulta el estado actual del dispositivo.
+
+| Campo | Valor |
+|---|---|
+| Método | GET |
+| URL | `/api/status` |
+| Headers | Ninguno |
+| Query params | Ninguno |
+| Payload | Ninguno |
+| Respuesta exitosa | `200 application/json` |
+
+Ejemplo de respuesta en modo Station:
+
+```json{
+"mode": "STA",
+"connected": true,
+"ssid": "MiRedWiFi",
+"ip": "192.168.1.34",
+"freeHeap": 213456
+}
+
+Ejemplo de respuesta en modo configuración:
+
+```json{
+"mode": "AP_CONFIG",
+"connected": false,
+"ssid": "ESP32-SETUP-ABCD",
+"ip": "192.168.4.1",
+"freeHeap": 211320
+}
+
+```
+
+## `POST /api/reset`
+
+Borra las credenciales guardadas y reinicia el ESP32 en modo configuración.
+
+| Campo | Valor |
+|---|---|
+| Método | POST |
+| URL | `/api/reset` |
+| Headers | Ninguno |
+| Query params | Ninguno |
+| Payload | Ninguno |
+| Respuesta exitosa | `200 text/html` |
+
+---
+
+## Endpoints auxiliares de portal cautivo
+
+| Endpoint | Método | Función |
+|---|---|---|
+| `/generate_204` | GET | Redirección para Android |
+| `/hotspot-detect.html` | GET | Redirección para iOS/macOS |
+| `/fwlink` | GET | Redirección para Windows |
